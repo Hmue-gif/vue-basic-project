@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- animate css link -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+     <!-- js link -->
+     <script src="app.js"></script>
+     <!-- vue link -->
+     <script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
+
+    <h2 class="text-center text-uppercase fw-bolder text-info my-3 animate__animated animate__backInLeft">Favorite Book</h2>
+    <div class="container">
+       <div class="app">          
+            <div v-if="showBook">
+                <div v-for="book in filterBooks">
+                    <div :class={favorite:book.isFav}>
+                        <div class="row align-items-center animate__animated animate__backInDown">
+                            <div class="col-12 col-md-6">
+                                <img :src="book.img" alt="" style="width: 300px; height: 150px; border-radius: 12px;" class="ms-5" >
+                            </div>
+                            <div class="my-2 py-3 col-12 col-md-6">
+                                <p class="text-info text-dark fw-bold animate__animated">Book Name : {{book.name}} </p>
+                                <p class="text-info text-dark fw-bold animate__animated">Book Id : {{book.id}} </p>
+                                <p class="text-info text-dark fw-bold animate__animated">Book Details : {{book.detail}} </p>
+                                <button class="btn btn-info ms-1" @click="book.isFav=!book.isFav">Unfavorite</button>
+                            </div>
+                        </div>
+                    </div><hr>
+                </div>
+            </div>
+
+            <div class="text-center my-2 animate__animated animate__bounceIn">
+                <button class="btn btn-info btn-lg" @click="showBook=!showBook">
+                    <span v-if="showBook">Hide</span>
+                    <span v-if="!showBook">Show</span>
+                </button>
+            </div>  
+            
+            <div class="text-center my-3 animate__animated animate__bounceIn">
+                <a :href="link" class="my-2 text-info fw-bold">Click for more deails about Us</a>
+            </div>
+       </div>
+    </div>
+
+    <script>
+        const App = Vue.createApp({
+            data(){
+                return{
+                        books : [{
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img1.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello Php",
+                                id : 102,
+                                detail : "Php basic to advanced",
+                                img : "../img/img2.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello Python",
+                                id : 103,
+                                detail : "Python basic to advanced",
+                                img : "../img/img3.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello OOP",
+                                id : 104,
+                                detail : "OOP basic to advanced",
+                                img : "../img/img4.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img3.jpg",
+                                isFav : false
+                            },
+                            {
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img2.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img1.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img4.jpg",
+                                isFav : true
+                            },
+                            {
+                                name : "Hello JavaScript",
+                                id : 101,
+                                detail : "JavaScript basic to advanced",
+                                img : "../img/img1.jpg",
+                                isFav : true
+                            },               
+                        ],
+                        showBook : true,
+                        link : "http://www.google.com"
+                }
+            },      
+
+                    
+            computed:{
+                    filterBooks(){
+                        return this.books.filter(el=>{
+                            return el.isFav
+                        })
+                    }
+            }              
+    })
+
+App.mount(".app")
+    </script>
+    
+</body>
+</html>

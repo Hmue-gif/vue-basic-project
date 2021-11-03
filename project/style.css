@@ -1,0 +1,8 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.favorite{
+    background-color: aquamarine;
+    border-radius: 15px;
+}
